@@ -369,7 +369,3 @@ class SimpleAssistant {
 // 4. Stop everything
 // assistant.stop(); 
 
-
-const assistant = new SimpleAssistant('AIzaSyCMLv7wx898rb6JMNjGeFWabzslcU25Tmo');
-await assistant.connect();
-await assistant.startCapture();
