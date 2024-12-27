@@ -1,5 +1,5 @@
-// Define AudioStreamer class separately
-class AudioStreamer {
+// Export both classes using ES module syntax
+export class AudioStreamer {
     constructor(context) {
         this.context = context;
         this.audioQueue = [];
@@ -86,7 +86,7 @@ class AudioStreamer {
     }
 }
 
-class SimpleAssistant {
+export class SimpleAssistant {
     constructor(apiKey) {
         this.apiKey = apiKey;
         this.ws = null;
@@ -357,15 +357,4 @@ class SimpleAssistant {
         this.audioStreamer.stop();
         console.log("Stopped all captures and connections");
     }
-}
-
-// Usage:
-// 1. Create instance with API key
-// const assistant = new SimpleAssistant('YOUR_API_KEY');
-// 2. Connect to API
-// await assistant.connect();
-// 3. Start capture
-// await assistant.startCapture();
-// 4. Stop everything
-// assistant.stop(); 
-
+} 
