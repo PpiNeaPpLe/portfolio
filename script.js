@@ -130,6 +130,17 @@ export class SimpleAssistant {
                     }
                 }
             }));
+
+            // Send initial context message
+            setTimeout(() => {
+                this.ws.send(JSON.stringify({
+                    userInput: {
+                        textInput: {
+                            text: "You are an AI assistant integrated into a website chat interface. You can see the user's screen and hear their audio and their voice. Your responses will be converted to speech. Please help users with their questions and tasks while being friendly and professional. The site you are currently on is a video to SOAP note AI tool. If the user asks you how to create a video walk them through step by step: go to dashboard, enter patient name, enter date of service, click open camera, start recording, click stop recording. Wait patiently for your video to upload."
+                        }
+                    }
+                }));
+            }, 1000); // Wait 1 second after setup to send context
         };
 
         this.ws.onmessage = async (event) => {
