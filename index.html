@@ -1,25 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jude Horak — AI Agents, CRMs &amp; Custom Software | Everyday Software</title>
+<meta name="description" content="Jude Horak builds AI voice and chat agents, custom CRMs, portals, and mobile apps for telecom, healthcare, marine, and home-services businesses. Founder of Everyday Software.">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta name="theme-color" content="#0b0d10">
+
+<!-- Reveal animations are opt-in: without JS the page renders fully visible, never blank. -->
+<script>document.documentElement.className += ' js';</script>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jude Horak — AI Agents, CRMs &amp; Custom Software">
+<meta property="og:description" content="AI voice and chat agents, custom CRMs, portals, and mobile apps. Founder of Everyday Software.">
+<meta property="og:url" content="https://ppineapple.github.io/portfolio/">
+
+<style>
+  :root{
+    --bg:#0b0d10;
+    --panel:#14181e;
+    --line:#232a33;
+    --text:#e8ecf1;
+    --muted:#98a2b0;
+    --accent:#fb923c;
+    --accent-2:#f97316;
+    --radius:14px;
+    --max:1120px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{line-height:1.15;letter-spacing:-0.02em;margin:0}
+  p{margin:0}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,13,16,.72);
+    backdrop-filter:saturate(160%) blur(12px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease;
+  }
+  header.scrolled{border-bottom-color:var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:650;letter-spacing:-0.01em}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+  .navlinks{display:flex;gap:28px;font-size:15px;color:var(--muted)}
+  .navlinks a{transition:color .2s}
+  .navlinks a:hover{color:var(--text)}
+  .nav-cta{
+    font-size:15px;font-weight:600;padding:8px 16px;border-radius:999px;
+    border:1px solid var(--line);transition:border-color .2s,background .2s;
+  }
+  .nav-cta:hover{border-color:var(--accent);background:rgba(251,146,60,.08)}
+  @media(max-width:820px){.navlinks{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:170px 0 110px}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(680px 380px at 12% -5%, rgba(251,146,60,.16), transparent 62%),
+      radial-gradient(560px 340px at 88% 8%, rgba(56,132,255,.10), transparent 60%);
+    pointer-events:none;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;
+    opacity:.16;
+    mask-image:radial-gradient(circle at 50% 0%,#000 0%,transparent 72%);
+    -webkit-mask-image:radial-gradient(circle at 50% 0%,#000 0%,transparent 72%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:13.5px;font-weight:600;letter-spacing:.02em;color:var(--muted);
+    border:1px solid var(--line);background:rgba(255,255,255,.02);
+    padding:6px 14px;border-radius:999px;margin-bottom:26px;
+  }
+  .pulse{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+
+  h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;max-width:16ch}
+  h1 .grad{
+    background:linear-gradient(100deg,var(--accent) 0%,#fbbf24 55%,var(--accent-2) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .lede{margin-top:22px;max-width:62ch;font-size:clamp(1.02rem,2vw,1.2rem);color:var(--muted)}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:999px;font-weight:600;font-size:15.5px;
+    transition:transform .18s ease,box-shadow .18s ease,border-color .2s,background .2s;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--accent);color:#1a1207;box-shadow:0 8px 28px -8px rgba(251,146,60,.55)}
+  .btn-primary:hover{box-shadow:0 14px 34px -10px rgba(251,146,60,.7)}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:#3a444f;background:rgba(255,255,255,.03)}
+
+  .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:64px}
+  .stat{
+    flex:1 1 190px;padding:20px 22px;border:1px solid var(--line);border-radius:var(--radius);
+    background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008));
+  }
+  .stat b{display:block;font-size:1.7rem;font-weight:700;letter-spacing:-0.03em}
+  .stat span{font-size:14px;color:var(--muted)}
+
+  /* ---------- sections ---------- */
+  section{padding:96px 0;border-top:1px solid var(--line)}
+  .sec-head{margin-bottom:44px}
+  .kicker{font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent)}
+  h2{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:700;margin-top:12px}
+  .sec-head p{margin-top:14px;color:var(--muted);max-width:60ch}
+
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:900px){.g3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.g3,.g2{grid-template-columns:1fr}}
+
+  .card{
+    padding:26px;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--panel);
+    transition:border-color .25s ease,transform .25s ease,background .25s ease;
+  }
+  .card:hover{border-color:#39424e;transform:translateY(-3px);background:#171c23}
+  .card h3{font-size:1.12rem;font-weight:650;margin-bottom:9px}
+  .card p{color:var(--muted);font-size:15.3px}
+  .card .ico{
+    width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin-bottom:16px;
+    background:rgba(251,146,60,.11);border:1px solid rgba(251,146,60,.22);
+  }
+  .card .ico svg{width:19px;height:19px;stroke:var(--accent);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ---------- work ---------- */
+  .work{border-left:2px solid var(--line);padding:4px 0 4px 26px;transition:border-color .3s}
+  .work:hover{border-left-color:var(--accent)}
+  .work-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:10px}
+  .work-top h3{font-size:1.3rem;font-weight:680}
+  .work-top .role{font-size:13.5px;color:var(--accent);font-weight:600}
+  .work p{color:var(--muted);font-size:15.5px;max-width:70ch}
+  .work ul{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:15.2px}
+  .work li{margin-bottom:6px}
+  .work li::marker{color:var(--accent)}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .tag{
+    font-size:12.5px;color:var(--muted);padding:4px 11px;border-radius:999px;
+    border:1px solid var(--line);background:rgba(255,255,255,.02);
+  }
+  .work-list{display:grid;gap:44px}
+
+  /* ---------- apps ---------- */
+  .app{display:flex;gap:16px;align-items:flex-start;padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);transition:border-color .25s,transform .25s}
+  .app:hover{border-color:#39424e;transform:translateY(-3px)}
+  .app .badge{
+    flex:0 0 auto;font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    padding:4px 9px;border-radius:6px;margin-top:2px;
+  }
+  .live{background:rgba(74,222,128,.13);color:#6ee7a0;border:1px solid rgba(74,222,128,.25)}
+  .beta{background:rgba(96,165,250,.13);color:#7fb2ff;border:1px solid rgba(96,165,250,.25)}
+  .app h3{font-size:1.03rem;font-weight:650;margin-bottom:5px}
+  .app p{color:var(--muted);font-size:14.8px}
+
+  /* ---------- stack ---------- */
+  .stack{display:grid;gap:26px;grid-template-columns:repeat(4,1fr)}
+  @media(max-width:860px){.stack{grid-template-columns:repeat(2,1fr)}}
+  .stack h4{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+  .stack ul{list-style:none;margin:0;padding:0;font-size:15px}
+  .stack li{padding:5px 0;color:var(--text);opacity:.86}
+
+  /* ---------- contact ---------- */
+  .contact-box{
+    border:1px solid var(--line);border-radius:20px;padding:52px 44px;text-align:center;position:relative;overflow:hidden;
+    background:linear-gradient(180deg,#14181e,#0f1216);
+  }
+  .contact-box::before{
+    content:"";position:absolute;inset:-1px;
+    background:radial-gradient(500px 220px at 50% 0%,rgba(251,146,60,.16),transparent 70%);
+    pointer-events:none;
+  }
+  .contact-box > *{position:relative}
+  .contact-box h2{max-width:20ch;margin:0 auto}
+  .contact-box p{margin:16px auto 0;color:var(--muted);max-width:52ch}
+  .links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px}
+
+  footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:14.5px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+
+  /* ---------- reveal ---------- */
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.2,.7,.3,1),transform .65s cubic-bezier(.2,.7,.3,1)}
+  .js .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .js .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+    .pulse{animation:none}
+    .btn:hover,.card:hover,.app:hover{transform:none}
+  }
+</style>
 </head>
 <body>
-  <iframe src="https://portfolio-6698076432.us-central1.run.app" title="My Portfolio"></iframe>
+
+<header id="hdr">
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top"><span class="dot"></span> Jude Horak</a>
+      <div class="navlinks">
+        <a href="#services">What I build</a>
+        <a href="#work">Work</a>
+        <a href="#apps">Apps</a>
+        <a href="#stack">Stack</a>
+      </div>
+      <a class="nav-cta" href="#contact">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="pulse"></span> Founder, Everyday Software</div>
+      <h1>I build the software that <span class="grad">runs the business</span>.</h1>
+      <p class="lede">
+        AI voice and chat agents that answer every call, custom CRMs and portals that replace
+        the spreadsheet pile, and mobile apps that ship. Real systems, live in production, for
+        telecom, healthcare, marine, and home-services companies.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact">Start a project</a>
+        <a class="btn btn-ghost" href="#work">See the work</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>40+</b><span>AI voice and chat agents live on real lines</span></div>
+        <div class="stat"><b>6</b><span>apps shipped to the App Store and Google Play</span></div>
+        <div class="stat"><b>250+</b><span>repositories built and maintained</span></div>
+        <div class="stat"><b>24/7</b><span>agents answering while you sleep</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">What I build</div>
+        <h2>One team, from the phone call to the database.</h2>
+        <p>Most shops do the website, or the automation, or the app. I do the whole stack, so the pieces actually talk to each other.</p>
+      </div>
+
+      <div class="grid g3">
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><path d="M12 18v4"/></svg></div>
+          <h3>AI voice agents</h3>
+          <p>Agents that pick up on the first ring, qualify the caller, book the appointment, and warm-transfer to a human when it matters. Running on Telnyx, Twilio, ElevenLabs, and OpenAI Realtime.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Chat, SMS and DM agents</h3>
+          <p>One brain across the website widget, text messages, Instagram and Facebook DMs, and email. Grounded in your own docs and inventory, not generic answers.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></div>
+          <h3>Custom CRMs and portals</h3>
+          <p>Quoting and ordering portals, broker pipelines, billing dashboards, alerting systems. Built to your workflow instead of bending your workflow to fit a SaaS.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M12 18h.01"/></svg></div>
+          <h3>iOS and Android apps</h3>
+          <p>Native and Expo apps taken all the way through App Store and Play review, including the parts nobody warns you about: entitlements, privacy labels, and rejections.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <h3>SEO, ads and local search</h3>
+          <p>Technical SEO, programmatic location pages, schema, Google Business Profile, and Google and Meta ad pipelines wired into the CRM so you can see what actually converted.</p>
+        </div>
+
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M4.2 7.5l2.6 1.5"/><path d="M17.2 15l2.6 1.5"/><path d="M4.2 16.5l2.6-1.5"/><path d="M17.2 9l2.6-1.5"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+          <h3>Automation and integrations</h3>
+          <p>The glue: call recordings to sentiment scores, paid orders to purchase orders, lead forms to the right rep's phone. Cloud Run, Firestore, BigQuery, Make, and a lot of custom webhooks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Selected work</div>
+        <h2>Systems running in production today.</h2>
+        <p>Every one of these is live, taking real calls, real orders, and real money.</p>
+      </div>
+
+      <div class="work-list">
+
+        <div class="work reveal">
+          <div class="work-top">
+            <h3>Masters Telecom</h3>
+            <span class="role">AI and software partner</span>
+          </div>
+          <p>A regional telecom carrier and managed service provider. I own their AI and internal software stack end to end.</p>
+          <ul>
+            <li>Voice agents answering for dozens of their business customers, each with its own routing, hours, and transfer rules</li>
+            <li>Call sentiment pipeline: every recording transcribed and scored within seconds of hangup, surfaced in a live dashboard</li>
+            <li>Quoting and ordering portal with card capture, e-signature, and an approval flow</li>
+            <li>E911 notification portal, usage and billing reporting, a white-labeled SIP trunk portal, and a customer mobile app</li>
+          </ul>
+          <div class="tags"><span class="tag">Next.js</span><span class="tag">Firestore</span><span class="tag">Cloud Run</span><span class="tag">Telnyx</span><span class="tag">Deepgram</span><span class="tag">BigQuery</span><span class="tag">Expo</span></div>
+        </div>
+
+        <div class="work reveal">
+          <div class="work-top">
+            <h3>RockHer</h3>
+            <span class="role">ROSI, the diamond concierge</span>
+          </div>
+          <p>A luxury diamond retailer. ROSI is their AI concierge, and she is the same brain everywhere the customer touches the brand.</p>
+          <ul>
+            <li>One agent across web chat, phone, SMS, and Instagram and Facebook DMs, with strict brand-voice rules enforced in code</li>
+            <li>Automated Score Report: give it any GIA or IGI certificate number and it grades the stone, benchmarks the price against live market comps, and emails a branded report</li>
+            <li>Multi-site support, including their Thailand storefront</li>
+          </ul>
+          <div class="tags"><span class="tag">OpenAI</span><span class="tag">Cloud Run</span><span class="tag">GIA / IGI APIs</span><span class="tag">Klaviyo</span><span class="tag">Make</span></div>
+        </div>
+
+        <div class="work reveal">
+          <div class="work-top">
+            <h3>Yacht Network</h3>
+            <span class="role">Broker CRM and AI buyer responder</span>
+          </div>
+          <p>A yacht brokerage network with brokers across North America, replacing a pile of disconnected tools with one system.</p>
+          <ul>
+            <li>Custom broker CRM: buyer and seller pipelines, listing cross-links, territory routing, and automated lead intake from every aggregator feed</li>
+            <li>AI buyer responder that answers inbound inquiries by email and SMS, grounded in live listing inventory, with a draft mode so brokers stay in control</li>
+            <li>Voice agent on the main line, plus WordPress SEO across nine brands</li>
+          </ul>
+          <div class="tags"><span class="tag">Next.js</span><span class="tag">Firestore</span><span class="tag">OpenAI Realtime</span><span class="tag">Twilio</span><span class="tag">WordPress</span></div>
+        </div>
+
+        <div class="work reveal">
+          <div class="work-top">
+            <h3>American Surgeons Group</h3>
+            <span class="role">Patient acquisition system</span>
+          </div>
+          <p>A multi-location surgical and wound-care practice. The whole funnel, from the search result to the booked appointment.</p>
+          <ul>
+            <li>24/7 AI receptionist on the main line, plus an SMS booking bot and automatic missed-call callbacks</li>
+            <li>Google Ads reporting pipeline pulling keyword, ad group, and conversion cuts straight from the API</li>
+            <li>Content and technical SEO that grew the practice blog past 20,000 organic sessions a month</li>
+          </ul>
+          <div class="tags"><span class="tag">ElevenLabs</span><span class="tag">Telnyx</span><span class="tag">Next.js</span><span class="tag">Google Ads API</span><span class="tag">PostHog</span></div>
+        </div>
+
+        <div class="work reveal">
+          <div class="work-top">
+            <h3>Practice Sports</h3>
+            <span class="role">CRM and back-office automation</span>
+          </div>
+          <p>A national athletic-facility equipment supplier.</p>
+          <ul>
+            <li>Custom CRM with a hard TCPA consent gate, because compliance is not something you bolt on later</li>
+            <li>Product catalog search over a mirrored WooCommerce inventory</li>
+            <li>A bot that turns paid web orders into QuickBooks purchase orders automatically</li>
+          </ul>
+          <div class="tags"><span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">QuickBooks API</span><span class="tag">Twilio</span></div>
+        </div>
+
+        <div class="work reveal">
+          <div class="work-top">
+            <h3>Logisti-Call</h3>
+            <span class="role">UK missed-call recovery</span>
+          </div>
+          <p>A UK agency selling missed-call voice agents to trades businesses.</p>
+          <ul>
+            <li>The voice-agent platform behind their offer, running on UK numbers</li>
+            <li>Branded demo generator: give it a company name and it produces a two-voice sample call and a shareable autoplay page, in bulk from a CSV</li>
+            <li>Lead-magnet landing page wired to conversion tracking on day one</li>
+          </ul>
+          <div class="tags"><span class="tag">Telnyx</span><span class="tag">ElevenLabs</span><span class="tag">Cloud Run</span><span class="tag">Firestore</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APPS -->
+  <section id="apps">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Products</div>
+        <h2>Apps I built and shipped myself.</h2>
+        <p>Same stack, no client. These go through the same store review as everything else.</p>
+      </div>
+
+      <div class="grid g2">
+        <div class="app reveal">
+          <span class="badge live">Live</span>
+          <div>
+            <h3>AI Magic Camera</h3>
+            <p>Turn a photo into anything: AI image generation and editing, a chat assistant that creates and edits images for you, and an audio studio for voiceovers, music, and sound effects.</p>
+          </div>
+        </div>
+
+        <div class="app reveal">
+          <span class="badge live">Live</span>
+          <div>
+            <h3>Food Scanner</h3>
+            <p>Scan a barcode, get a straight verdict on what is actually in it. iOS and Android.</p>
+          </div>
+        </div>
+
+        <div class="app reveal">
+          <span class="badge live">Live</span>
+          <div>
+            <h3>Everyday Hub</h3>
+            <p>The client-facing app for Everyday Software: messaging, project status, and live performance stats in one place.</p>
+          </div>
+        </div>
+
+        <div class="app reveal">
+          <span class="badge beta">TestFlight</span>
+          <div>
+            <h3>AislePath</h3>
+            <p>Your grocery list, sorted by the aisle you will actually find it in, mapped to real store layouts.</p>
+          </div>
+        </div>
+
+        <div class="app reveal">
+          <span class="badge beta">TestFlight</span>
+          <div>
+            <h3>RepAlarm</h3>
+            <p>An alarm you cannot dismiss until you have done the reps. Built on iOS AlarmKit and Screen Time.</p>
+          </div>
+        </div>
+
+        <div class="app reveal">
+          <span class="badge live">Live</span>
+          <div>
+            <h3>Certified Voiceflow Expert</h3>
+            <p>Dozens of published functions and integrations built for the Voiceflow team and its community, plus years of custom conversational builds on the platform.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Stack</div>
+        <h2>What I reach for.</h2>
+      </div>
+      <div class="stack reveal">
+        <div>
+          <h4>Front end</h4>
+          <ul>
+            <li>Next.js and React</li>
+            <li>TypeScript</li>
+            <li>Vite</li>
+            <li>Tailwind CSS</li>
+            <li>Expo / React Native</li>
+            <li>SwiftUI</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Back end and data</h4>
+          <ul>
+            <li>Node.js</li>
+            <li>Python</li>
+            <li>Firestore and Firebase</li>
+            <li>PostgreSQL / Supabase</li>
+            <li>BigQuery</li>
+            <li>Cloud Run and Cloud Build</li>
+          </ul>
+        </div>
+        <div>
+          <h4>AI and voice</h4>
+          <ul>
+            <li>OpenAI (Realtime, Agents)</li>
+            <li>Anthropic Claude</li>
+            <li>ElevenLabs</li>
+            <li>Deepgram</li>
+            <li>Telnyx and Twilio</li>
+            <li>Voiceflow</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ops and growth</h4>
+          <ul>
+            <li>Google Cloud</li>
+            <li>Make and custom webhooks</li>
+            <li>Google Ads API</li>
+            <li>Search Console and GA4</li>
+            <li>PostHog</li>
+            <li>App Store Connect API</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box reveal">
+        <div class="kicker">Get in touch</div>
+        <h2>Tell me what is breaking, or what you wish existed.</h2>
+        <p>Most projects start with a short call about where the manual work is. If I am not the right fit, I will say so.</p>
+        <div class="links">
+          <a class="btn btn-primary" href="mailto:jude@everydaysoftware.ai">jude@everydaysoftware.ai</a>
+          <a class="btn btn-ghost" href="https://everydaysoftware.ai" target="_blank" rel="noopener">Everyday Software</a>
+          <a class="btn btn-ghost" href="https://github.com/ppineapple" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="https://linkedin.com/in/jude-horak" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="yr">2026</span> Jude Horak &middot; Everyday Software</span>
+    <span><a href="https://www.voiceflow.com/contributors/jude-horak" target="_blank" rel="noopener">Certified Voiceflow Expert</a></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var hdr = document.getElementById('hdr');
+  function onScroll(){ hdr.classList.toggle('scrolled', window.scrollY > 8); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  var els = document.querySelectorAll('.reveal');
+  function showAll(){ els.forEach(function(el){ el.classList.add('in'); }); }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    els.forEach(function(el, i){ el.style.transitionDelay = (Math.min(i,6) * 45) + 'ms'; io.observe(el); });
+    // Safety net: if the observer never fires (odd viewports, print, embedded
+    // renderers), don't leave the page looking empty.
+    setTimeout(showAll, 2500);
+  } else {
+    showAll();
+  }
+</script>
+
 </body>
 </html>
